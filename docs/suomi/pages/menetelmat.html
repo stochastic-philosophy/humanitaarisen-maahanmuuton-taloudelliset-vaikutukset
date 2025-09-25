@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menetelmät ja mallit - Suomen kotoutusinvestointien kannattavuus</title>
+    <meta name="description" content="Dynaaminen NPV-malli, aineiston kuvaus ja opportunity cost -lähestymistavan systematisointi">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p>Tämä sivusto tallentaa teemavalintasi selaimen muistiin paremman käyttökokemuksen takaamiseksi. Jatkaako tallentaminen?</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Hyväksy</button>
+                <button id="decline-cookies" class="btn-decline">Kieltäydy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Suomen kotoutustutkimus</a></h1>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="perusteet.html" class="nav-link">Perusteet</a>
+                <a href="tulokset.html" class="nav-link">Tulokset</a>
+                <a href="johtopäätökset.html" class="nav-link">Johtopäätökset</a>
+                <a href="simulaattori.html" class="nav-link">Simulaattori</a>
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Vaihda teemaa">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="article-container">
+            <header class="article-header">
+                <h1 class="article-title">Menetelmät ja mallit</h1>
+                <p class="article-subtitle">Dynaaminen NPV-malli ja opportunity cost -lähestymistavan systematisointi</p>
+            </header>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+
+            <div class="article-content">
+                <p class="section-intro"><em><strong>Huomautus:</strong> Tämä sivu on luotu yhteistyössä Claude Sonnet 4:n kanssa tutkimusartikkelin pohjalta.</em></p>
+
+                <h2>Tutkimusaineisto</h2>
+
+                <p>Tutkimuksessa käytetyt lähtötiedot perustuvat Suomen virallisiin tilastoihin ja kansainväliseen tutkimuskirjallisuuteen. Kaikki käytetyt parametrit ovat jäljitettävissä luotettaviin lähteisiin, mikä takaa tulosten validiteetin ja mahdollistaa analyysin toistamisen.</p>
+
+                <h3>Viralliset suomalaiset lähteet</h3>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tietolähde</th>
+                            <th>Käytetty data</th>
+                            <th>Luotettavuus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>KEHA-keskus (2025)</strong></td>
+                            <td>Laskennalliset korvaukset kotoutumispalveluista</td>
+                            <td>Erittäin luotettava - virallinen hinnasto</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tilastokeskus</strong></td>
+                            <td>Palkkatasot ja työmarkkinajärjestöjen tiedot</td>
+                            <td>Erittäin luotettava - rekisteripohjainen</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Verohallinto</strong></td>
+                            <td>Tuloveroasteet ja työnantajan sivukulut</td>
+                            <td>Erittäin luotettava - lakisääteiset määrät</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VATT</strong></td>
+                            <td>Rekisteriaineistot työllistymispolusta</td>
+                            <td>Luotettava - perustuu seurantadataan</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kela (2025)</strong></td>
+                            <td>Sosiaaliturvan määrät ja kestot</td>
+                            <td>Erittäin luotettava - maksatusdata</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Kansainvälinen tutkimuskirjallisuus</h3>
+
+                <p>Multiplikaattorikertoimet ja opportunity cost -parametrit perustuvat laajaan kansainväliseen tutkimusnäyttöön:</p>
+
+                <div class="summary-box">
+                    <h3>Keskeiset kansainväliset lähteet</h3>
+                    <ul>
+                        <li><strong>Reeves et al. (2013):</strong> EU-terveydenhuollon multiplikaattori 4.3 - vahvistaa korkeat kertoimet hoivapalveluissa</li>
+                        <li><strong>Zhang et al. (2017):</strong> Kanadalainen tiimityötutkimus - opportunity cost -kertoimen empiirinen perusta</li>
+                        <li><strong>CDC Foundation (2015):</strong> USA:n poissaolokustannustutkimus - järjestelmähäiriöiden kalleuden osoittaminen</li>
+                        <li><strong>World Bank (2025):</strong> Terveyspalvelujen multiplikaattorit - globaali vertailukehys</li>
+                    </ul>
+                </div>
+
+                <h2>Dynaamisen NPV-mallin rakenne</h2>
+
+                <p>Kehitimme dynaamisen nettonykyarvomallin (NPV), joka huomioi kotoutusinvestointien kustannukset ja tuotot 20 vuoden aikajänteellä. Malli on ensimmäinen, joka integroi systemaattisesti opportunity cost -vaikutukset perinteiseen kustannus-hyöty -analyysiin.</p>
+
+                <h3>Kokonaiskustannukset vuodessa</h3>
+
+                <p>Mallin kustannuspuoli sisältää kaikki todelliset menot, joita yhteiskunnalle aiheutuu ei-työperäisestä maahanmuutosta:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Kustannuskomponentti</th>
+                            <th>Määrä (€/vuosi)</th>
+                            <th>Lähde</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kotoutuspalvelut</td>
+                            <td>6 000</td>
+                            <td>KEHA-keskus laskennalliset korvaukset</td>
+                        </tr>
+                        <tr>
+                            <td>Työttömyysturva</td>
+                            <td>9 600 (800€/kk × 12)</td>
+                            <td>Kela perusturvan määrät</td>
+                        </tr>
+                        <tr>
+                            <td>Asumistuki</td>
+                            <td>4 200 (350€/kk × 12)</td>
+                            <td>Kela asumistukitilastot</td>
+                        </tr>
+                        <tr>
+                            <td>Toimeentulotuki</td>
+                            <td>3 600 (300€/kk × 12)</td>
+                            <td>THL toimeentulotukitilastot</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Yhteensä</strong></td>
+                            <td><strong>23 400</strong></td>
+                            <td>Työttömän henkilön kokonaiskustannus</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Realistinen työllistymispolku</h3>
+
+                <p>Työllistymispolku perustuu Tilastokeskuksen rekisteriaineistoon ja VATT:n seurantatutkimuksiin pakolaistaustaisista henkilöistä Suomessa:</p>
+
+                <div class="summary-box">
+                    <h3>Työllistymisasteet ajassa</h3>
+                    <p><strong>Vuodet 1-2:</strong> 15% työllisyysaste - intensiivisen kotoutumiskoulutuksen vaihe</p>
+                    <p><strong>Vuodet 3-5:</strong> 40% työllisyysaste - ammatillisen integroitumisen vaihe</p>
+                    <p><strong>Vuodet 6-20:</strong> 60% työllisyysaste - vakiintunut integroitumisvaihe</p>
+                </div>
+
+                <p>Nämä luvut ovat konservatiivisia verrattuna Ruotsin parhaimpiin tuloksiin (75% työllisyysaste), mutta realistisia Suomen olosuhteissa ottaen huomioon kielitaitovaatimukset ja työmarkkinoiden rakenne.</p>
+
+                <h3>Verotulojen kolmikomponenttimalli</h3>
+
+                <p>Verotulot lasketaan kolmesta erillisestä komponentista, jotka kattavat sekä suorat että välilliset vaikutukset:</p>
+
+                <ol>
+                    <li><strong>Suorat verotulot:</strong> 45% bruttopalkasta (tuloverot + työnantajan sivukulut)</li>
+                    <li><strong>Kulutusverotulot:</strong> 95% × 20% ALV-kanta kulutuksesta (kulutusaste × ALV)</li>
+                    <li><strong>Välilliset verotulot:</strong> (Multiplikaattori + Opportunity cost - 2) × 22.5% verotuloja</li>
+                </ol>
+
+                <p>Kolmas komponentti on tutkimuksen keskeinen innovaatio. Se huomioi sekä perinteiset multiplikaattorivaikutukset että opportunity cost -vaikutukset yhtenäisenä verotulokertoimena.</p>
+
+                <h2>Opportunity Cost -lähestymistavan systematisointi</h2>
+
+                <p>Tutkimuksemme keskeisin metodologinen innovaatio on systemaattinen opportunity cost -vaikutusten mallinnus maahanmuuttokontekstissa. Tämä lähestymistapa perustuu vahvaan kansainväliseen tutkimusnäyttöön.</p>
+
+                <h3>Kanadalainen tiimityötutkimus</h3>
+
+                <p>Zhang et al. (2017) kanadalainen tutkimus osoitti, että tuottavuustappiot ovat merkittävästi suurempia kuin pelkät palkkakustannukset, kun tiimityöntekijä puuttuu. Tutkimus analysoi linkitettyjä työnantaja-työntekijä -aineistoja ja havaitsi:</p>
+
+                <ul>
+                    <li>Yksittäisen työntekijän poissaolo vaikuttaa koko tiimin tuottavuuteen</li>
+                    <li>Vaikutus on suurempi välttämättömissä palveluissa</li>
+                    <li>Korvaavan työvoiman hankkiminen on kallista ja hidasta</li>
+                    <li>Järjestelmähäiriöt kertautuvat organisaatiohierarkiassa</li>
+                </ul>
+
+                <h3>Yhdysvaltalainen poissaolokustannustutkimus</h3>
+
+                <p>CDC Foundation (2015) -tutkimus analysoi työntekijöiden poissaolojen kustannuksia Yhdysvalloissa ja havaitsi, että ne maksavat työnantajille 225.8 miljardia dollaria vuosittain. Keskeinen havainto oli, että 60% kustannuksista aiheutuu "Presenteeism"-ilmiöstä - sairaina töissä käymisestä.</p>
+
+                <div class="summary-box">
+                    <h3>Poissaolokustannusten rakenne USA:ssa</h3>
+                    <p><strong>40% suorat poissaolot:</strong> Työntekijä ei ole paikalla, työ jää tekemättä</p>
+                    <p><strong>60% presenteeism:</strong> Työntekijä on paikalla mutta toimintakyky alentunut</p>
+                    <p><strong>Kokonaisvaikutus:</strong> 2.5 kertaa suurempi kuin suorat palkkakustannukset</p>
+                </div>
+
+                <p>Tämä vahvistaa, että työvoiman puutteiden kokonaiskustannukset ylittävät merkittävästi pelkät palkkakustannukset.</p>
+
+                <h3>Opportunity cost -kertoimen määritys</h3>
+
+                <p>Kansainvälisen tutkimusnäytön perusteella määritimme opportunity cost -kertoimeksi <strong>2.5</strong> realistisessa skenaariossa. Kerroin kuvaa sitä, moninkertaisesti yksittäisen työntekijän yhteiskunnallinen arvo ylittää hänen suoran palkkansa välttämättömissä palveluissa.</p>
+
+                <p>Kerroin perustuu kolmeen komponenttiin:</p>
+
+                <ol>
+                    <li><strong>Tiimityövaikutukset (1.0):</strong> Kanadalainen tutkimus osoittaa yhden henkilön poissaolon vaikuttavan koko tiimin tuottavuuteen</li>
+                    <li><strong>Järjestelmäkustannukset (1.0):</strong> USA:n presenteeism-tutkimus osoittaa järjestelmähäiriöiden kalleuden</li>
+                    <li><strong>Kriisi-interventiot (0.5):</strong> Konservatiivinen arvio siitä, että puutteet johtavat myöhemmin kalliimpiin korjaustoimiin</li>
+                </ol>
+
+                <p>Yhteensä kerroin 2.5 on <strong>konservatiivinen arvio</strong>, sillä jätämme pois monia vaikeasti mitattavia vaikutuksia kuten stressin, työuupumuksen ja pitkäaikaisten terveysongelmien syvenemisen.</p>
+
+                <h2>Kansainväliset vertailukohteet ja validointi</h2>
+
+                <p>Mallin validoimiseksi vertasimme tuloksia kansainvälisiin kokemuksiin, erityisesti Ruotsin menestykselliseen maahanmuuttopolitiikkaan.</p>
+
+                <h3>Ruotsin empiriirinenn näyttö</h3>
+
+                <p>Ruotsin kokemus tarjoaa merkittävän empiirisen vertailukohdan. Rothsteinin (2017) analyysi osoitti, että vuonna 2016, kun Ruotsi oli vastaanottanut suurimmat pakolaismäärät Pohjoismaissa, sen talouskasvu oli nelinkertainen muihin maihin verrattuna.</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mittari</th>
+                            <th>Ruotsi 2016</th>
+                            <th>Muut Pohjoismaat</th>
+                            <th>Ero</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>BKT:n kasvu</td>
+                            <td>3.2%</td>
+                            <td>0.8%</td>
+                            <td>4x suurempi</td>
+                        </tr>
+                        <tr>
+                            <td>Työllisyysaste (humanitaariset)</td>
+                            <td>58%</td>
+                            <td>52% (Saksa)</td>
+                            <td>+6 pp</td>
+                        </tr>
+                        <tr>
+                            <td>Hoivapalvelujen työllisyys</td>
+                            <td>+12%</td>
+                            <td>+2%</td>
+                            <td>6x suurempi kasvu</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Tämä "involuntary Keynesianism" -ilmiö vahvistaa opportunity cost -lähestymistapamme pätevyyttä: kun välttämättömät palvelut saavat tarvitsemansa työvoiman, positiiviset talousvaikutukset ylittävät perinteiset ennusteet.</p>
+
+                <h3>EU:n multiplikaattoritutkimus</h3>
+
+                <p>Reeves et al. (2013) eurooppalainen tutkimus analysoi terveydenhuollon investointien taloudellisia vaikutuksia 27 EU-maassa. Keskeiset havainnot tukevat malliamme:</p>
+
+                <ul>
+                    <li><strong>Terveydenhuollon multiplikaattori 4.3</strong> - merkittävästi korkeampi kuin aiemmin arvioitu</li>
+                    <li>Hoivapalvelut ovat erityisen tehokkaita talouden elvyttäjiä</li>
+                    <li>Vaikutukset ovat suurimpia maissa, joissa on työvoiman puutetta hoivasektoreilla</li>
+                    <li>Pitkän aikavälin vaikutukset ylittävät lyhyen aikavälin kustannukset</li>
+                </ul>
+
+                <h2>Mallin tekninen toteutus</h2>
+
+                <p>Dynaaminen NPV-malli toteutettiin Excel-pohjaisena laskentavälineenä, joka mahdollistaa parametrien helpon säätämisen ja herkkyysanalyysin tekemisen. Malli käyttää seuraavaa peruskaavaa:</p>
+
+                <div class="summary-box">
+                    <h3>NPV-laskennan peruskaava</h3>
+                    <p><strong>NPV = Σ(t=1 to 20) [(Tulot_t - Kustannukset_t) / (1 + r)^t]</strong></p>
+                    <p>Missä:</p>
+                    <ul>
+                        <li><strong>Tulot_t</strong> = Suorat + Kulutus + Välilliset verotulot vuonna t</li>
+                        <li><strong>Kustannukset_t</strong> = Kotoutus + Sosiaaliturva vuonna t</li>
+                        <li><strong>r</strong> = Diskonttokorko (3% realistisessa skenaariossa)</li>
+                        <li><strong>t</strong> = Vuosi (1-20)</li>
+                    </ul>
+                </div>
+
+                <h3>Herkkyysanalyysin toteutus</h3>
+
+                <p>Mallin luotettavuuden varmistamiseksi teimme laajan herkkyysanalyysin kaikille keskeisille parametreille:</p>
+
+                <ul>
+                    <li><strong>Multiplikaattorivaihtelut:</strong> 2.5 - 4.3 (EU-tutkimuksen vaihteluväli)</li>
+                    <li><strong>Opportunity cost -vaihtelut:</strong> 1.5 - 4.0 (konservatiivista optimistiseen)</li>
+                    <li><strong>Työllistymispolun vaihtelut:</strong> 45% - 75% (pessimistisestä optimistiseen)</li>
+                    <li><strong>Diskonttokorkovaihtelut:</strong> 1% - 8% (matala-korkea korkotaso)</li>
+                </ul>
+
+                <p>Analyysi osoittaa, että malli on robustia ja tuottaa positiivisia tuloksia kaikissa realistisissa parametriyhdistelmissä.</p>
+
+                <h3>Metodologiset vahvuudet ja rajoitukset</h3>
+
+                <p><strong>Vahvuudet:</strong></p>
+                <ul>
+                    <li>Perustuu kokonaan julkisiin ja jäljitettäviin lähteisiin</li>
+                    <li>Huomioi kansainvälisen tutkimusnäytön systemaattisesti</li>
+                    <li>Ensimmäinen opportunity cost -vaikutusten systemaattinen mallinnus</li>
+                    <li>Laaja herkkyysanalyysi vahvistaa tulosten robustisuutta</li>
+                </ul>
+
+                <p><strong>Rajoitukset:</strong></p>
+                <ul>
+                    <li>Opportunity cost -kertoimet perustuvat kansainväliseen kirjallisuuteen, ei Suomen-spesifisiin tutkimuksiin</li>
+                    <li>Pitkän aikavälin vaikutukset (yli 20 vuotta) eivät ole mallissa</li>
+                    <li>Makrotaloudellisia yleisen tasapainon vaikutuksia ei huomioida</li>
+                    <li>Harmaan talouden positiiviset vaikutukset jätetty pois konservatiivisuuden vuoksi</li>
+                </ul>
+            </div>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+        </article>
+    </main>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
