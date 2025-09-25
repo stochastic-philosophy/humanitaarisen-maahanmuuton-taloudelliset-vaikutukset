@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suomen kotoutusinvestointien kannattavuustutkimus</title>
+    <meta name="description" content="Kokonaisvaltainen analyysi Suomen ei-työperäisen maahanmuuton taloudellisesta kannattavuudesta">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p>Tämä sivusto tallentaa teemavalintasi selaimen muistiin paremman käyttökokemuksen takaamiseksi. Jatkaako tallentaminen?</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Hyväksy</button>
+                <button id="decline-cookies" class="btn-decline">Kieltäydy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Maahanmuuton taloudelliset vaikutukset</a></h1>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#johdanto" class="nav-link">Johdanto</a>
+                <a href="#tunnusluvut" class="nav-link">Tunnusluvut</a>
+                <a href="#tutkimusosat" class="nav-link">Tutkimus</a>
+                <a href="#havainnot" class="nav-link">Havainnot</a>
+                <a href="#simulaattori" class="nav-link">Simulaattori</a>
+                <a href="#lahteet" class="nav-link">Lähteet</a>
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Vaihda teemaa">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="johdanto" class="hero">
+            <div class="container">
+                <h1>🇫🇮 Suomen kotoutusinvestointien kannattavuus</h1>
+                <p class="hero-subtitle">Kokonaisvaltainen malli opportunity cost -näkökulmalla</p>
+                <p class="hero-description">
+                    Tämä tutkimus analysoi ei-työperäisen maahanmuuton taloudellista kannattavuutta 
+                    Suomessa kehittäen uuden mallin, joka huomioi sekä perinteiset 
+                    multiplikaattorivaikutukset että aiemmin mallintamattomat "opportunity cost" 
+                    -vaikutukset. Tutkimus osoittaa, että kun huomioidaan välttämättömien 
+                    palveluiden rooli talouden toimivuudessa, kotoutusinvestointien kannattavuus 
+                    paranee merkittävästi.<br><br>
+                    <strong>Sivusto on luotu yhteistyössä Claude Sonnet 4:n kanssa.</strong>
+                </p>
+                <div class="hero-actions">
+                    <a href="downloads/humanitaarisen-maahanmuuton-taloudelliset-vaikutukset-suomessa.pdf" class="read-more-btn" download>📄 Lataa tutkimusraportti (PDF)</a>
+                    <a href="#simulaattori" class="back-home-btn">🧮 Kokeile simulaattoria</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tunnusluvut Section -->
+        <section id="tunnusluvut" class="content-section">
+            <div class="container">
+                <h2>Keskeiset tunnusluvut</h2>
+                <p class="section-intro">
+                    <strong>Realistisilla parametreilla</strong> (3.4 multiplikaattori + 2.5 opportunity cost -kerroin) 
+                    kotoutusinvestointien kannattavuus on merkittävästi positiivinen.
+                </p>
+
+                <div class="key-metrics-grid">
+                    <div class="metric-card positive">
+                        <div class="metric-value">65 400€</div>
+                        <div class="metric-label">Nettonykyarvo (NPV) 20 vuodessa</div>
+                        <div class="metric-description">Diskontattu kokonaisarvo per henkilö</div>
+                    </div>
+
+                    <div class="metric-card positive">
+                        <div class="metric-value">3.2 vuotta</div>
+                        <div class="metric-label">Takaisinmaksuaika</div>
+                        <div class="metric-description">Aika, jolloin investointi maksaa itsensä takaisin</div>
+                    </div>
+
+                    <div class="metric-card positive">
+                        <div class="metric-value">340%</div>
+                        <div class="metric-label">ROI (10 vuotta)</div>
+                        <div class="metric-description">Sijoitetun pääoman tuotto</div>
+                    </div>
+
+                    <div class="metric-card positive">
+                        <div class="metric-value">19 710€</div>
+                        <div class="metric-label">Vuosittainen nettovaikutus</div>
+                        <div class="metric-description">Keskimääräinen vuosittainen nettotuotto</div>
+                    </div>
+
+                    <div class="metric-card positive">
+                        <div class="metric-value">27 510€</div>
+                        <div class="metric-label">Vuosittaiset verotulot</div>
+                        <div class="metric-description">Suorat + kulutus + välilliset verot</div>
+                    </div>
+
+                    <div class="metric-card neutral">
+                        <div class="metric-value">7 800€</div>
+                        <div class="metric-label">Vuosittaiset kustannukset</div>
+                        <div class="metric-description">Kotoutus + sosiaaliturva keskimäärin</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutkimusosat Section -->
+        <section id="tutkimusosat" class="content-section">
+            <div class="container">
+                <h2>Tutkimuksen osat</h2>
+                <p class="section-intro">
+                    <strong>Tutkimus koostuu neljästä keskeisestä osiosta</strong>, jotka yhdessä muodostavat 
+                    kokonaisvaltaisen kuvan kotoutusinvestointien taloudellisesta kannattavuudesta.
+                </p>
+
+                <div class="research-parts">
+                    <div class="part-card">
+                        <h3>🎯 Tutkimuksen perusteet</h3>
+                        <p>Tutkimuksen tavoitteet, teoreettinen perusta ja metodologian kehitys. 
+                        Miksi perinteiset mallit aliarvioivat maahanmuuton hyötyjä ja miten 
+                        opportunity cost -näkökulma muuttaa analyysia.</p>
+                        <div class="part-highlights">
+                            <span class="highlight">Teoreettinen perusta</span>
+                            <span class="highlight">Baumolin kustannuskasvuteoria</span>
+                            <span class="highlight">Kansainvälinen konteksti</span>
+                        </div>
+                        <a href="pages/perusteet.html" class="read-more-btn">Lue lisää</a>
+                    </div>
+
+                    <div class="part-card">
+                        <h3>🔬 Menetelmät ja mallit</h3>
+                        <p>Dynaamisen NPV-mallin kehittäminen, aineiston kuvaus ja opportunity cost 
+                        -lähestymistavan systematisointi. Kuinka kanadalainen tiimityötutkimus 
+                        ja yhdysvaltalaiset poissaolokustannukset tukevat mallia.</p>
+                        <div class="part-highlights">
+                            <span class="highlight">NPV-mallinnus</span>
+                            <span class="highlight">Opportunity cost -kerroin</span>
+                            <span class="highlight">Empiriirisely validoitu</span>
+                        </div>
+                        <a href="pages/menetelmat.html" class="read-more-btn">Lue lisää</a>
+                    </div>
+
+                    <div class="part-card">
+                        <h3>📊 Tulokset ja analyysit</h3>
+                        <p>Perusmallin tulokset, laaja herkkyysanalyysi ja skenaariovertailut. 
+                        Miten erilaiset parametrit vaikuttavat kannattavuuteen ja mitä 
+                        Ruotsin kokemus kertoo optimististen arvioiden realistisuudesta.</p>
+                        <div class="part-highlights">
+                            <span class="highlight">Herkkyysanalyysi</span>
+                            <span class="highlight">Skenaariovertailu</span>
+                            <span class="highlight">Ruotsi-vertailu</span>
+                        </div>
+                        <a href="pages/tulokset.html" class="read-more-btn">Lue lisää</a>
+                    </div>
+
+                    <div class="part-card">
+                        <h3>💡 Johtopäätökset ja suositukset</h3>
+                        <p>Tulosten tulkinta, tutkimuksen rajoitukset ja politiikkasuositukset. 
+                        Mitkä ovat välittömät toimenpiteet ja pitkän aikavälin kehitystarpeet 
+                        kotoutumispolitiikassa.</p>
+                        <div class="part-highlights">
+                            <span class="highlight">Politiikkasuositukset</span>
+                            <span class="highlight">Jatkotutkimustarpeet</span>
+                            <span class="highlight">Luotettavuusarvio</span>
+                        </div>
+                        <a href="pages/johtopäätökset.html" class="read-more-btn">Lue lisää</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Havainnot Section -->
+        <section id="havainnot" class="content-section">
+            <div class="container">
+                <h2>Keskeiset havainnot</h2>
+                <p class="section-intro">
+                    <strong>Tutkimus paljastaa</strong> merkittäviä puutteita perinteisissä 
+                    maahanmuuton taloudellisen vaikuttavuuden arviointimalleissa.
+                </p>
+
+                <div class="findings-detailed">
+                    <div class="finding-major">
+                        <h3>🚀 130% aliarviointi perinteisillä malleilla</h3>
+                        <p>Kun opportunity cost -vaikutukset otetaan huomioon, perinteiset mallit 
+                        aliarvioivat maahanmuuton taloudellisia hyötyjä keskimäärin 130%. 
+                        Tämä selittää, miksi empiiriset kokemukset (kuten Ruotsissa) ovat 
+                        olleet positiivisempia kuin teoreettiset ennusteet.</p>
+                        <div class="finding-data">
+                            <div class="data-point">
+                                <span class="value">28 000€</span>
+                                <span class="label">Perinteinen malli (NPV)</span>
+                            </div>
+                            <div class="data-point">
+                                <span class="value">65 400€</span>
+                                <span class="label">Kehitetty malli (NPV)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="finding-major">
+                        <h3>⚡ Ruotsin menestys on selitettävissä</h3>
+                        <p>Vuonna 2016, kun Ruotsi oli vastaanottanut suurimmat pakolaismäärät 
+                        Pohjoismaissa, sen talouskasvu oli nelinkertainen muihin maihin 
+                        verrattuna. Tämä "involuntary Keynesianism" -ilmiö tukee näkemystä 
+                        välttämättömien palvelujen täyttämisen talouden elvyttävästä vaikutuksesta.</p>
+                    </div>
+
+                    <div class="finding-major">
+                        <h3>🎯 Realistinen takaisinmaksuaika</h3>
+                        <p>Toisin kuin usein väitetään, kotoutusinvestointien takaisinmaksuaika 
+                        ei ole vuosikymmeniä vaan realistisesti 3-5 vuotta. Tämä tekee 
+                        investoinneista taloudellisesti järkeviä jopa konservatiivisilla arvioilla.</p>
+                    </div>
+
+                    <div class="finding-major">
+                        <h3>🔧 Tehokas kotoutus on avainasia</h3>
+                        <p>Tulokset riippuvat merkittävästi kotoutuspolitiikan tehokkuudesta. 
+                        Erityispanostus hoiva- ja palvelualojen kielitaitokoulutukseen 
+                        sekä ammatillisten pätevyyksien tunnustamiseen on keskeistä.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulaattori Section -->
+        <section id="simulaattori" class="content-section">
+            <div class="container">
+                <h2>Interaktiivinen simulaattori</h2>
+                <p class="section-intro">
+                    <strong>Kokeile itse</strong>, miten erilaiset parametrit vaikuttavat 
+                    kotoutusinvestointien kannattavuuteen. Simulaattori perustuu tutkimuksen 
+                    malliin ja antaa reaaliaikaisia tuloksia.
+                </p>
+
+                <div class="simulator-preview">
+                    <div class="simulator-card">
+                        <h3>🧮 Kannattavuussimulattori</h3>
+                        <p>Säädä parametreja ja näe välittömästi, miten ne vaikuttavat:</p>
+                        <ul>
+                            <li>Nettonykyarvoon (NPV) 20 vuoden aikajänteellä</li>
+                            <li>Takaisinmaksuaikaan vuosissa</li>
+                            <li>Vuosittaisiin kustannuksiin ja tuottoihin</li>
+                            <li>Sijoitetun pääoman tuottoprosenttiin (ROI)</li>
+                        </ul>
+                        <div class="preview-scenarios">
+                            <div class="scenario-preview">
+                                <span class="scenario-name">Pessimistinen</span>
+                                <span class="scenario-value">38 000€ NPV</span>
+                            </div>
+                            <div class="scenario-preview active">
+                                <span class="scenario-name">Realistinen</span>
+                                <span class="scenario-value">65 400€ NPV</span>
+                            </div>
+                            <div class="scenario-preview">
+                                <span class="scenario-name">Optimistinen</span>
+                                <span class="scenario-value">94 000€ NPV</span>
+                            </div>
+                        </div>
+                        <a href="pages/simulaattori.html" class="read-more-btn">Avaa simulaattori</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lähteet Section -->
+        <section id="lahteet" class="content-section">
+            <div class="container">
+                <h2>Keskeiset lähteet ja aineistot</h2>
+                <p class="section-intro">
+                    <strong>Tutkimus perustuu</strong> luotettaviin virallisiin tilastoihin 
+                    ja kansainväliseen tutkimuskirjallisuuteen.
+                </p>
+
+                <div class="sources-grid">
+                    <div class="source-category">
+                        <h3>📊 Viralliset tilastot</h3>
+                        <ul>
+                            <li><strong>Tilastokeskus</strong> - Maahanmuuttajien työllisyys ja palkkatasot</li>
+                            <li><strong>Kela</strong> - Sosiaaliturvan määrät ja kustannukset</li>
+                            <li><strong>Verohallinto</strong> - Verotustiedot ja sivukulut</li>
+                            <li><strong>KEHA-keskus</strong> - Kotoutuspalvelujen korvaukset</li>
+                            <li><strong>VATT</strong> - Rekisteriaineistot ja seurantadatat</li>
+                        </ul>
+                    </div>
+
+                    <div class="source-category">
+                        <h3>🌍 Kansainvälinen tutkimus</h3>
+                        <ul>
+                            <li><strong>Reeves et al. (2013)</strong> - Terveyspalvelujen multiplikaattorit EU:ssa</li>
+                            <li><strong>Zhang et al. (2017)</strong> - Kanadalainen tiimityötutkimus</li>
+                            <li><strong>CDC Foundation (2015)</strong> - Poissaolokustannukset USA:ssa</li>
+                            <li><strong>Rothstein (2017)</strong> - Ruotsin maahanmuuttopolitiikka</li>
+                            <li><strong>World Bank (2025)</strong> - Terveys ja talouskasvu</li>
+                        </ul>
+                    </div>
+
+                    <div class="source-category">
+                        <h3>🔬 Metodologiset perusteet</h3>
+                        <ul>
+                            <li><strong>Baumol (1967)</strong> - Kustannuskasvuteorian perusteet</li>
+                            <li><strong>Bivens (2003)</strong> - Työllisyysmultiplikaattorit</li>
+                            <li><strong>European Commission (2015)</strong> - Työmarkkinaintegraatio</li>
+                            <li><strong>Ruist (2015)</strong> - Ruotsin fiskaalisten vaikutusten analyysi</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="download-section">
+                    <h3>📄 Lataa koko tutkimusraportti</h3>
+                    <p>Täysi tutkimusraportti sisältää yksityiskohtaisen metodologian, 
+                    kaikki laskelmat ja laajan lähdeluettelon.</p>
+                    <a href="downloads/humanitaarisen-maahanmuuton-taloudelliset-vaikutukset-suomessa.pdf" class="read-more-btn" download>
+                        Lataa PDF-raportti (1.2 MB)
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Takaisin-linkki -->
+        <div class="back-home">
+            <a href="../index.html" class="back-home-btn">← Takaisin pääsivulle</a>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Humanitaarisen maahanmuuton taloudelliset vaikutukset. Sivusto luotu yhteistyössä Claude Sonnet 4:n kanssa.</p>
+            <p>Tietosuoja: Sivusto tallentaa ainoastaan teemavalintaa localStorage:een käyttäjän suostumuksella.</p>
+            <p>Yhteydenotot: stochasticphilosophy(at)gmail(dot)com</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>
