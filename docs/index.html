@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maahanmuuttotutkimus - Taloudellisen kannattavuuden analyysi</title>
+    <meta name="description" content="Kattava tutkimus ei-työperäisen maahanmuuton taloudellisesta kannattavuudesta eri maissa">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p>Tämä sivusto tallentaa teemavalintasi selaimen muistiin paremman käyttökokemuksen takaamiseksi. Jatkaako tallentaminen?</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Hyväksy</button>
+                <button id="decline-cookies" class="btn-decline">Kieltäydy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="#home">Maahanmuuttotutkimus</a></h1>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#tutkimukset" class="nav-link">Tutkimukset</a>
+                <a href="#menetelmat" class="nav-link">Menetelmät</a>
+                <a href="#tulokset" class="nav-link">Tulokset</a>
+                <a href="#tietoja" class="nav-link">Tietoja</a>
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Vaihda teemaa">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+            
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Maahanmuuttotutkimus</h1>
+                <p class="hero-subtitle">Taloudellisen kannattavuuden analyysi opportunity cost -näkökulmalla</p>
+                <p class="hero-description">
+                    Kattava tutkimus ei-työperäisen maahanmuuton taloudellisesta kannattavuudesta, 
+                    joka huomioi perinteiset multiplikaattorivaikutukset sekä aiemmin mallintamattomat 
+                    "opportunity cost" -vaikutukset. Tutkimus osoittaa, että kun huomioidaan 
+                    välttämättömien palveluiden rooli talouden toimivuudessa, kotoutusinvestointien 
+                    kannattavuus paranee merkittävästi.<br><br>
+                    <strong>Sivusto on luotu yhteistyössä Claude Sonnet 4:n kanssa.</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- Tutkimukset Section -->
+        <section id="tutkimukset" class="content-section">
+            <div class="container">
+                <h2>Maakohtaiset tutkimukset</h2>
+                <p class="section-intro">
+                    Tutkimus analysoi kotoutusinvestointien taloudellista kannattavuutta eri maissa 
+                    käyttäen yhtenäistä metodologiaa ja opportunity cost -lähestymistapaa.
+                </p>
+
+                <div class="country-grid">
+                    <div class="country-card">
+                        <h3>🇫🇮 Suomi</h3>
+                        <p>Kokonaisvaltainen analyysi Suomen kotoutusinvestointien kannattavuudesta. 
+                        Realistisilla parametreilla takaisinmaksuaika 3-5 vuotta ja 20 vuoden NPV noin 65 000€ per henkilö.</p>
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <div class="metric-value">65 400€</div>
+                                <div class="metric-label">NPV (20v)</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">3.2 vuotta</div>
+                                <div class="metric-label">Takaisinmaksuaika</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">340%</div>
+                                <div class="metric-label">ROI (10v)</div>
+                            </div>
+                        </div>
+                        <a href="suomi/index.html" class="read-more-btn">Tutustu tutkimukseen</a>
+                    </div>
+
+                    <div class="country-card">
+                        <h3>🇺🇸 Yhdysvallat</h3>
+                        <p>Tulossa: Amerikkalaisen maahanmuuttojärjestelmän taloudellinen analyysi 
+                        samalla opportunity cost -metodologialla. Vertailu Suomen tuloksiin.</p>
+                        <div class="key-metrics">
+                            <div class="metric">
+                                <div class="metric-value">Tulossa</div>
+                                <div class="metric-label">Analyysi</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">2025</div>
+                                <div class="metric-label">Julkaisu</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Vertailu</div>
+                                <div class="metric-label">Suomeen</div>
+                            </div>
+                        </div>
+                        <a href="usa/index.html" class="read-more-btn disabled">Tulossa pian</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menetelmät Section -->
+        <section id="menetelmat" class="content-section">
+            <div class="container">
+                <h2>Tutkimuksen innovaatiot</h2>
+                <p class="section-intro">
+                    <strong>Tämä tutkimus esittää ensimmäistä kertaa</strong> systemaattisen mallin 
+                    "vältettyjen järjestelmämenetysten" huomioimiseksi maahanmuuttotutkimuksessa.
+                </p>
+
+                <div class="innovation-grid">
+                    <div class="innovation-item">
+                        <h3>🔄 Opportunity Cost -lähestymistapa</h3>
+                        <p>Huomioidaan ensimmäistä kertaa systemaattisesti mitä menetyksiä syntyy, 
+                        jos välttämättömät työt jäävät tekemättä. Perustuu kansainväliseen tutkimukseen 
+                        tiimityön tuottavuustappioista ja järjestelmähäiriöiden kustannuksista.</p>
+                    </div>
+
+                    <div class="innovation-item">
+                        <h3>📊 Kokonaisvaltainen mallinnus</h3>
+                        <p>Yhdistää perinteiset multiplikaattorivaikutukset, realistisen työllistymispolun 
+                        ja todelliset kokonaiskustannukset. Dynaaminen NPV-malli 20 vuoden aikajänteellä.</p>
+                    </div>
+
+                    <div class="innovation-item">
+                        <h3>🌍 Kansainvälinen vertailu</h3>
+                        <p>Hyödyntää Ruotsin menestyksellistä kokemusta ja eurooppalaisia 
+                        multiplikaattoritutkimuksia. Ensimmäinen systemaattinen vertailu 
+                        pohjoismaisen mallin tehokkuudesta.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tulokset Section -->
+        <section id="tulokset" class="content-section">
+            <div class="container">
+                <h2>Keskeiset havainnot</h2>
+                <p class="section-intro">
+                    <strong>Tutkimus osoittaa</strong>, että perinteiset mallit aliarvioivat 
+                    maahanmuuton taloudellisia hyötyjä jopa 50-130%, kun opportunity cost -vaikutukset 
+                    jätetään huomioimatta.
+                </p>
+
+                <div class="findings-grid">
+                    <div class="finding-item positive">
+                        <h3>130% aliarviointi</h3>
+                        <p>Perinteiset mallit aliarvioivat hyötyjä merkittävästi, kun opportunity cost -vaikutukset otetaan huomioon</p>
+                    </div>
+
+                    <div class="finding-item positive">
+                        <h3>3-5 vuotta</h3>
+                        <p>Takaisinmaksuaika on realistisesti 3-5 vuotta, ei vuosikymmeniä kuten usein väitetään</p>
+                    </div>
+
+                    <div class="finding-item positive">
+                        <h3>Ruotsin menestys</h3>
+                        <p>Ruotsin nopea talouskasvu pakolaisten vastaanoton aikana on selitettävissä taloustieteellisesti</p>
+                    </div>
+
+                    <div class="finding-item neutral">
+                        <h3>Tehokas kotoutus</h3>
+                        <p>Tulokset riippuvat merkittävästi kotoutuspolitiikan tehokkuudesta ja työmarkkinoiden vastaanottokyvystä</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tietoja Section -->
+        <section id="tietoja" class="content-section">
+            <div class="container">
+                <h2>Tietoja tutkimuksesta</h2>
+                <p class="section-intro">
+                    <strong>Tämä tutkimus on toteutettu</strong> tieteellisten menetelmien mukaisesti 
+                    hyödyntäen virallisia tilastoja ja kansainvälistä tutkimuskirjallisuutta.
+                </p>
+
+                <div class="about-content">
+                    <div class="about-section">
+                        <h3>Metodologia</h3>
+                        <p>Tutkimus perustuu dynaamisen nettonykyarvomallin (NPV) kehittämiseen, joka huomioi:</p>
+                        <ul>
+                            <li>Todelliset kokonaiskustannukset (kotoutus + sosiaaliturva)</li>
+                            <li>Realistisen työllistymispolun tilastokeskuksen datan mukaan</li>
+                            <li>Perinteiset multiplikaattorivaikutukset</li>
+                            <li>Opportunity cost -vaikutukset välttämättömissä palveluissa</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>Lähteet ja validointi</h3>
+                        <p>Tutkimus perustuu luotettaviin lähteisiin:</p>
+                        <ul>
+                            <li>Suomen viralliset tilastot (Tilastokeskus, Kela, Verohallinto)</li>
+                            <li>Kansainvälinen tutkimuskirjallisuus (World Bank, EU-tutkimukset)</li>
+                            <li>Vertailu Ruotsin empiirisiin kokemuksiin</li>
+                            <li>Laaja herkkyysanalyysi keskeisille parametreille</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>Tekijät ja yhteystiedot</h3>
+                        <p>Tutkimus on toteutettu yhteistyössä Claude Sonnet 4:n kanssa. 
+                        Yhteydenotot: stochasticphilosophy(at)gmail(dot)com</p>
+                        <p><strong>Sivuston lähdekoodi:</strong> Saatavilla GitHub-repositoriossa avoimen datan periaatteiden mukaisesti.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Maahanmuuttotutkimus. Sivusto luotu yhteistyössä Claude Sonnet 4:n kanssa.</p>
+            <p>Tietosuoja: Sivusto tallentaa ainoastaan teemavalintaa localStorage:een käyttäjän suostumuksella.</p>
+            <p>Yhteydenotot: stochasticphilosophy(at)gmail(dot)com</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
