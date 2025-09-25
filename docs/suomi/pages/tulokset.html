@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tulokset ja analyysit - Suomen kotoutusinvestointien kannattavuus</title>
+    <meta name="description" content="Perusmallin tulokset, herkkyysanalyysi ja skenaariovertailut kotoutusinvestointien kannattavuudesta">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p>Tämä sivusto tallentaa teemavalintasi selaimen muistiin paremman käyttökokemuksen takaamiseksi. Jatkaako tallentaminen?</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Hyväksy</button>
+                <button id="decline-cookies" class="btn-decline">Kieltäydy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Suomen kotoutustutkimus</a></h1>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="perusteet.html" class="nav-link">Perusteet</a>
+                <a href="menetelmat.html" class="nav-link">Menetelmät</a>
+                <a href="johtopäätökset.html" class="nav-link">Johtopäätökset</a>
+                <a href="simulaattori.html" class="nav-link">Simulaattori</a>
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Vaihda teemaa">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="article-container">
+            <header class="article-header">
+                <h1 class="article-title">Tulokset ja analyysit</h1>
+                <p class="article-subtitle">Perusmallin tulokset, herkkyysanalyysi ja skenaariovertailut</p>
+            </header>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+
+            <div class="article-content">
+                <p class="section-intro"><em><strong>Huomautus:</strong> Tämä sivu on luotu yhteistyössä Claude Sonnet 4:n kanssa tutkimusartikkelin pohjalta.</em></p>
+
+                <h2>Perusmallin tulokset</h2>
+
+                <p>Realistisilla parametreilla (multiplikaattori 3.4, opportunity cost -kerroin 2.5) kotoutusinvestointien taloudellinen kannattavuus osoittautui merkittävästi positiiviseksi. Tulokset perustuvat 20 vuoden aikajänteelle tehtyyn nettonykyarvoanalyysiin, joka huomioi sekä diskonttokorkoon perustuvan ajanarvon että realistisen työllistymispolun.</p>
+
+                <h3>Vuosittaiset vaikutukset per henkilö</h3>
+
+                <p>Mallin mukaan kotoutettu henkilö tuottaa yhteiskunnalle keskimäärin seuraavat vuosittaiset nettovaikutukset 20 vuoden keskiarvona laskettuna:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Tulokomponentti</th>
+                            <th>Määrä (€/vuosi)</th>
+                            <th>Osuus kokonaistuloista</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Suorat verotulot</td>
+                            <td>10 800</td>
+                            <td>39%</td>
+                        </tr>
+                        <tr>
+                            <td>Kulutusverotulot</td>
+                            <td>4 560</td>
+                            <td>17%</td>
+                        </tr>
+                        <tr>
+                            <td>Välilliset verotulot + vältetyt menetykset</td>
+                            <td>12 150</td>
+                            <td>44%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Yhteensä verotuloja</strong></td>
+                            <td><strong>27 510</strong></td>
+                            <td><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Kustannuskomponentti</th>
+                            <th>Määrä (€/vuosi)</th>
+                            <th>Osuus kokonaiskustannuksista</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kotoutuspalvelut (keskiarvo)</td>
+                            <td>2 400</td>
+                            <td>31%</td>
+                        </tr>
+                        <tr>
+                            <td>Työttömyysturva (painotettu)</td>
+                            <td>3 840</td>
+                            <td>49%</td>
+                        </tr>
+                        <tr>
+                            <td>Asumistuki (painotettu)</td>
+                            <td>1 260</td>
+                            <td>16%</td>
+                        </tr>
+                        <tr>
+                            <td>Toimeentulotuki (painotettu)</td>
+                            <td>300</td>
+                            <td>4%</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Yhteensä kustannuksia</strong></td>
+                            <td><strong>7 800</strong></td>
+                            <td><strong>100%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="summary-box">
+                    <h3>Keskeisiä huomioita vuosittaisista vaikutuksista</h3>
+                    <p><strong>Nettovaikutus:</strong> +19 710€/vuosi per henkilö - merkittävästi positiivinen</p>
+                    <p><strong>Opportunity cost -osuus:</strong> 44% kokonaistuloista tulee välitetyistä ja vältetyistä menetyksistä</p>
+                    <p><strong>Kustannusten jakautuminen:</strong> Työttömyysturva suurin yksittäinen kustannus (49%)</p>
+                </div>
+
+                <h3>Kannattavuusindikaattorit</h3>
+
+                <p>Perusmallin mukaan kotoutusinvestoinnin kannattavuus ilmaistuna eri mittareilla:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Mittari</th>
+                            <th>Arvo</th>
+                            <th>Tulkinta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>NPV (20 vuotta)</strong></td>
+                            <td>65 400€</td>
+                            <td>Diskontattu nettonykyarvo per henkilö</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Takaisinmaksuaika</strong></td>
+                            <td>3.2 vuotta</td>
+                            <td>Aika, jolloin kumulatiiviset tulot ylittävät kustannukset</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ROI (10 vuotta)</strong></td>
+                            <td>340%</td>
+                            <td>Sijoitetun pääoman tuotto kymmenessä vuodessa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>IRR (sisäinen tuotto)</strong></td>
+                            <td>28%</td>
+                            <td>Investoinnin sisäinen tuottoprosentti</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>Herkkyysanalyysi</h2>
+
+                <p>Mallin luotettavuuden varmistamiseksi testasimme sen herkkyyttä keskeisille parametreille. Analyysi osoittaa, että malli on robusti ja tuottaa positiivisia tuloksia laajassa parametrispektrissä.</p>
+
+                <h3>Multiplikaattorivaihtelut</h3>
+
+                <p>Testasimme multiplikaattorin vaikutusta käyttäen kansainvälisen tutkimuksen vaihteluväliä 2.5-4.3:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Multiplikaattori</th>
+                            <th>NPV (20v)</th>
+                            <th>Takaisinmaksu</th>
+                            <th>Lähde/perustelu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2.5</td>
+                            <td>42 000€</td>
+                            <td>4.1 vuotta</td>
+                            <td>Konservatiivinen perinteinen arvio</td>
+                        </tr>
+                        <tr>
+                            <td>3.4</td>
+                            <td>65 400€</td>
+                            <td>3.2 vuotta</td>
+                            <td>Realistinen (World Bank hoivapalvelut)</td>
+                        </tr>
+                        <tr>
+                            <td>4.3</td>
+                            <td>89 000€</td>
+                            <td>2.6 vuotta</td>
+                            <td>Optimistinen (EU-terveydenhuolto)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Työllistymispolun vaihtelut</h3>
+
+                <p>Työllistymisasteen vaikutus lopputuloksiin eri skenaarioissa:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Skenaario</th>
+                            <th>Max työllisyys</th>
+                            <th>NPV (20v)</th>
+                            <th>Perustelu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pessimistinen</td>
+                            <td>45%</td>
+                            <td>38 000€</td>
+                            <td>Vaikeat taustamaat, matala koulutus</td>
+                        </tr>
+                        <tr>
+                            <td>Realistinen</td>
+                            <td>60%</td>
+                            <td>65 400€</td>
+                            <td>Tilastokeskuksen rekisteriaineisto</td>
+                        </tr>
+                        <tr>
+                            <td>Optimistinen</td>
+                            <td>75%</td>
+                            <td>94 000€</td>
+                            <td>Ruotsin parhaat kohorttit</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Opportunity cost -kertoimen vaihtelut</h3>
+
+                <p>Opportunity cost -kertoimen vaikutus on merkittävä, mikä korostaa tämän parametrin tärkeyttä:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>OC-kerroin</th>
+                            <th>NPV (20v)</th>
+                            <th>Ero perusmalliin</th>
+                            <th>Perustelu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1.5</td>
+                            <td>48 000€</td>
+                            <td>-27%</td>
+                            <td>Minimaalinen opportunity cost</td>
+                        </tr>
+                        <tr>
+                            <td>2.5</td>
+                            <td>65 400€</td>
+                            <td>Perusmalli</td>
+                            <td>Kansainvälisen tutkimuksen mukaan</td>
+                        </tr>
+                        <tr>
+                            <td>4.0</td>
+                            <td>102 000€</td>
+                            <td>+56%</td>
+                            <td>Korkea-arvio tiimityöstä</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="summary-box">
+                    <h3>Herkkyysanalyysin keskeiset havainnot</h3>
+                    <p><strong>Robustius:</strong> NPV pysyy positiivisena kaikissa realistisissa parametriyhdistelmissä</p>
+                    <p><strong>Opportunity cost -riippuvuus:</strong> Tämä parametri vaikuttaa tuloksiin eniten</p>
+                    <p><strong>Konservatiivisuus:</strong> Käytetyt parametrit ovat keskimäärin konservatiivisia</p>
+                </div>
+
+                <h2>Skenaariovertailu</h2>
+
+                <p>Vertailimme kolmea erilaista lähestymistapaa kotoutusinvestointien arviointiin, jotta voisimme osoittaa opportunity cost -näkökulman merkityksen:</p>
+
+                <h3>Kolme vertailuskenaariota</h3>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Malli</th>
+                            <th>NPV (20v)</th>
+                            <th>Takaisinmaksu</th>
+                            <th>Sisältää</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Perinteinen malli</strong></td>
+                            <td>28 000€</td>
+                            <td>5.8 vuotta</td>
+                            <td>Suorat kustannukset ja tulot + perinteiset multiplikaattorit</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kehitetty malli</strong></td>
+                            <td>65 400€</td>
+                            <td>3.2 vuotta</td>
+                            <td>+ Opportunity cost -vaikutukset</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ruotsi-malli</strong></td>
+                            <td>89 000€</td>
+                            <td>2.6 vuotta</td>
+                            <td>+ Korkeat kertoimet Ruotsin kokemusten mukaan</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Opportunity cost -näkökulman sisällyttäminen paransi kannattavuutta keskimäärin <strong>130%</strong> verrattuna perinteiseen malliin. Tämä selittää merkittävän osan erosta teoreettisten ennusteiden ja käytännön kokemusten välillä.</p>
+
+                <h3>Ruotsin mallin validointi</h3>
+
+                <p>Ruotsin kokemus tarjoaa empiirisen validoinnin optimistisemmille parametreille. Vuonna 2016 Ruotsi vastaanotti 163 000 turvapaikanhakijaa (1.6% väestöstä), mikä oli suhteellisesti suurin määrä Euroopassa. Samanaikaisesti:</p>
+
+                <ul>
+                    <li><strong>BKT kasvu:</strong> 3.2% (EU-keskiarvo 2.0%)</li>
+                    <li><strong>Työllisyysaste:</strong> Parantui kaikissa ikäryhmissä</li>
+                    <li><strong>Hoivapalvelut:</strong> Merkittävä työllisyyskasvu</li>
+                    <li><strong>Julkisen talouden tasapaino:</strong> Pysyi vakaana</li>
+                </ul>
+
+                <div class="summary-box">
+                    <h3>Ruotsin kokemus vahvistaa malliamme</h3>
+                    <p>Ruotsin nopea talouskasvu pakolaisten vastaanoton aikana on täysin linjassa kehitetyn mallimme kanssa. Tämä osoittaa, että opportunity cost -vaikutukset eivät ole vain teoreettisia, vaan realisoituvat käytännössä kun kotoutuspolitiikka on tehokasta.</p>
+                </div>
+
+                <h2>Ajallinen kehitys ja kumulatiiviset vaikutukset</h2>
+
+                <p>Kotoutusinvestointien vaikutukset kehittyvät ajassa työllistymispolun mukaisesti. Seuraava taulukko näyttää kumulatiivisen nettoarvon kehityksen:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Vuosi</th>
+                            <th>Työllisyysaste</th>
+                            <th>Vuotuinen netto</th>
+                            <th>Kumulatiivinen netto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1-2</td>
+                            <td>15%</td>
+                            <td>-15 200€</td>
+                            <td>-30 400€</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>40%</td>
+                            <td>+8 500€</td>
+                            <td>-21 900€</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>40%</td>
+                            <td>+21 800€</td>
+                            <td>-100€</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>40%</td>
+                            <td>+21 800€</td>
+                            <td>+21 700€</td>
+                        </tr>
+                        <tr>
+                            <td>6-20</td>
+                            <td>60%</td>
+                            <td>+28 200€</td>
+                            <td>+444 700€</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Taulukko osoittaa, että <strong>takaisinmaksupiste saavutetaan noin neljännen vuoden kohdalla</strong>, minkä jälkeen investointi tuottaa tasaista positiivista kassavirtaa.</p>
+
+                <h3>Diskontatut vaikutukset</h3>
+
+                <p>Kun huomioidaan rahan aika-arvo 3% diskonttokorolla, 20 vuoden diskontattu nettonykyarvo on 65 400€. Tämä on konservatiivinen arvio, sillä:</p>
+
+                <ul>
+                    <li>Diskonttokorko 3% on korkeahko pitkän aikavälin inflaatio-odotuksiin nähden</li>
+                    <li>Laskelmaan ei sisälly vaikutuksia yli 20 vuoden aikajänteellä</li>
+                    <li>Toisen polven integroitumista ei huomioida</li>
+                    <li>Makrotaloudelliset yleisen tasapainon vaikutukset jätetty pois</li>
+                </ul>
+
+                <h2>Sektorikohtaiset vaikutukset</h2>
+
+                <p>Maahanmuuttajat työllistyvät Suomessa epätasaisesti eri sektoreille. Tämä vaikuttaa opportunity cost -vaikutusten realisoimiseen:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Sektori</th>
+                            <th>Osuus työllisistä</th>
+                            <th>Opportunity cost -kerroin</th>
+                            <th>Perustelu</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hoivapalvelut</td>
+                            <td>35%</td>
+                            <td>4.0</td>
+                            <td>Korkea EU-multiplikaattori, kriittinen tarve</td>
+                        </tr>
+                        <tr>
+                            <td>Siivous ja ylläpito</td>
+                            <td>25%</td>
+                            <td>3.0</td>
+                            <td>Välttämätön järjestelmien toiminnalle</td>
+                        </tr>
+                        <tr>
+                            <td>Ravintola-ala</td>
+                            <td>20%</td>
+                            <td>2.0</td>
+                            <td>Kuluttajapalvelut, kohtuullinen multiplikaattori</td>
+                        </tr>
+                        <tr>
+                            <td>Kuljetus ja logistiikka</td>
+                            <td>15%</td>
+                            <td>2.5</td>
+                            <td>Kriittinen infrastruktuuri</td>
+                        </tr>
+                        <tr>
+                            <td>Muut palvelut</td>
+                            <td>5%</td>
+                            <td>1.5</td>
+                            <td>Vähemmän kriittiset toiminnot</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Painotettu keskimääräinen opportunity cost -kerroin näiden jakaumien mukaan on 2.9, mikä on lähellä mallissa käytettyä arvoa 2.5 (konservatiivinen arvio).</p>
+
+                <h2>Kansainvälinen vertailu</h2>
+
+                <p>Tulosten asettaminen kansainväliseen kontekstiin vahvistaa niiden uskottavuutta:</p>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Maa</th>
+                            <th>NPV-arvio</th>
+                            <th>Takaisinmaksu</th>
+                            <th>Huomioita</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Suomi (tämä tutkimus)</strong></td>
+                            <td>65 400€</td>
+                            <td>3.2 vuotta</td>
+                            <td>Opportunity cost -malli</td>
+                        </tr>
+                        <tr>
+                            <td>Ruotsi (Ruist 2015)</td>
+                            <td>55 000€</td>
+                            <td>4.1 vuotta</td>
+                            <td>Perinteinen malli, ei opportunity cost</td>
+                        </tr>
+                        <tr>
+                            <td>Saksa (IAB 2020)</td>
+                            <td>48 000€</td>
+                            <td>5.2 vuotta</td>
+                            <td>Konservatiivinen arvio</td>
+                        </tr>
+                        <tr>
+                            <td>Kanada (CIC 2019)</td>
+                            <td>78 000€</td>
+                            <td>2.8 vuotta</td>
+                            <td>Pistejärjestelmä, korkeampi koulutus</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>Suomen tulokset sijoittuvat keskikastiin, mikä on odotettavaa ottaen huomioon:</p>
+                <ul>
+                    <li>Suhteellisen korkeat sosiaalikulut aluksi</li>
+                    <li>Vaativat kielitaitovaatimukset hidastavat integraatiota</li>
+                    <li>Korkea verotaso kompensoi hitaampaa integraatiota</li>
+                    <li>Opportunity cost -vaikutukset nostavat arvioita muihin maihin nähden</li>
+                </ul>
+            </div>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+        </article>
+    </main>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
