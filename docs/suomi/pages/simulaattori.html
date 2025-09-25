@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktiivinen kannattavuussimulattori - Suomen kotoutusinvestointien kannattavuus</title>
+    <meta name="description" content="Testaa itse, miten erilaiset parametrit vaikuttavat kotoutusinvestointien kannattavuuteen">
+    <link rel="stylesheet" href="../../css/styles.css">
+</head>
+<body>
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-consent" style="display: none;">
+        <div class="cookie-content">
+            <p>Tämä sivusto tallentaa teemavalintasi selaimen muistiin paremman käyttökokemuksen takaamiseksi. Jatketaanko tallentamista?</p>
+            <div class="cookie-buttons">
+                <button id="accept-cookies" class="btn-accept">Hyväksy</button>
+                <button id="decline-cookies" class="btn-decline">Kieltäydy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1><a href="../index.html">Suomen kotoutustutkimus</a></h1>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="perusteet.html" class="nav-link">Perusteet</a>
+                <a href="menetelmat.html" class="nav-link">Menetelmät</a>
+                <a href="tulokset.html" class="nav-link">Tulokset</a>
+                <a href="johtopäätökset.html" class="nav-link">Johtopäätökset</a>
+                
+                <button id="theme-toggle" class="theme-toggle" aria-label="Vaihda teemaa">
+                    <span class="theme-icon"></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <article class="article-container" style="max-width: 1200px;">
+            <header class="article-header">
+                <h1 class="article-title">Interaktiivinen kannattavuussimulattori</h1>
+                <p class="article-subtitle">Testaa itse, miten erilaiset parametrit vaikuttavat kotoutusinvestointien kannattavuuteen</p>
+            </header>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+
+            <div class="article-content">
+                <p class="section-intro"><em><strong>Huomautus:</strong> Tämä simulaattori on luotu yhteistyössä Claude Sonnet 4:n kanssa tutkimusartikkelin pohjalta. Simulaattori käyttää samaa matemaattista mallia kuin tutkimus.</em></p>
+
+                <div class="simulator-container">
+                    <!-- Scenario Selection -->
+                    <div class="scenario-selection">
+                        <h3>Valitse skenaario tai säädä parametreja itse:</h3>
+                        <div class="scenario-buttons">
+                            <button class="scenario-btn" data-scenario="pessimistic">Pessimistinen</button>
+                            <button class="scenario-btn active" data-scenario="realistic">Realistinen</button>
+                            <button class="scenario-btn" data-scenario="optimistic">Optimistinen</button>
+                            <button class="scenario-btn" data-scenario="custom">Mukautettu</button>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="results-section">
+                        <div class="result-card positive">
+                            <div class="result-value" id="npv-result">65 400€</div>
+                            <div class="result-label">Nettonykyarvo (NPV) 20v</div>
+                        </div>
+                        <div class="result-card positive">
+                            <div class="result-value" id="payback-result">3.2 vuotta</div>
+                            <div class="result-label">Takaisinmaksuaika</div>
+                        </div>
+                        <div class="result-card positive">
+                            <div class="result-value" id="roi-result">340%</div>
+                            <div class="result-label">ROI (10 vuotta)</div>
+                        </div>
+                        <div class="result-card positive">
+                            <div class="result-value" id="annual-net-result">19 710€</div>
+                            <div class="result-label">Vuotuinen netto</div>
+                        </div>
+                    </div>
+
+                    <!-- Parameter Controls -->
+                    <div class="controls-section">
+                        <div class="control-group">
+                            <h3>Perusparametrit</h3>
+                            
+                            <div class="slider-container">
+                                <label for="people-count">Henkilöiden määrä:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="people-count" class="slider" min="100" max="10000" step="100" value="1000">
+                                    <div class="value-display" id="people-count-value">1000</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="hourly-wage">Tuntipalkka (€):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="hourly-wage" class="slider" min="8" max="25" step="0.5" value="13.5">
+                                    <div class="value-display" id="hourly-wage-value">13.5€</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="discount-rate">Diskonttokorko (%):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="discount-rate" class="slider" min="1" max="8" step="0.5" value="3">
+                                    <div class="value-display" id="discount-rate-value">3%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <h3>Työllistymispolku</h3>
+                            
+                            <div class="slider-container">
+                                <label for="employment-12">Työllisyys vuodet 1-2 (%):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="employment-12" class="slider" min="0" max="50" step="5" value="15">
+                                    <div class="value-display" id="employment-12-value">15%</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="employment-35">Työllisyys vuodet 3-5 (%):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="employment-35" class="slider" min="20" max="70" step="5" value="40">
+                                    <div class="value-display" id="employment-35-value">40%</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="employment-610">Työllisyys vuodet 6-20 (%):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="employment-610" class="slider" min="40" max="80" step="5" value="60">
+                                    <div class="value-display" id="employment-610-value">60%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <h3>Kustannukset (€/vuosi)</h3>
+                            
+                            <div class="slider-container">
+                                <label for="integration-cost">Kotoutuskustannukset:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="integration-cost" class="slider" min="3000" max="10000" step="500" value="6000">
+                                    <div class="value-display" id="integration-cost-value">6000€</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="unemployment-benefit">Työttömyysturva:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="unemployment-benefit" class="slider" min="6000" max="15000" step="600" value="9600">
+                                    <div class="value-display" id="unemployment-benefit-value">9600€</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="housing-allowance">Asumistuki:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="housing-allowance" class="slider" min="2000" max="8000" step="400" value="4200">
+                                    <div class="value-display" id="housing-allowance-value">4200€</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <h3>Taloudelliset kertoimet</h3>
+                            
+                            <div class="slider-container">
+                                <label for="tax-rate">Kokonaisveroaste (%):</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="tax-rate" class="slider" min="35" max="55" step="2" value="45">
+                                    <div class="value-display" id="tax-rate-value">45%</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="multiplier">Multiplikaattori:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="multiplier" class="slider" min="1.0" max="5.0" step="0.1" value="3.4">
+                                    <div class="value-display" id="multiplier-value">3.4</div>
+                                </div>
+                            </div>
+
+                            <div class="slider-container">
+                                <label for="opportunity-cost">Opportunity cost -kerroin:</label>
+                                <div class="slider-wrapper">
+                                    <input type="range" id="opportunity-cost" class="slider" min="1.0" max="8.0" step="0.1" value="2.5">
+                                    <div class="value-display" id="opportunity-cost-value">2.5</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Results -->
+                    <div class="additional-results">
+                        <h3>Yksityiskohtaiset tulokset</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-label">Vuosittaiset verotulot:</span>
+                                <span class="result-value" id="annual-tax-revenue">27 510€</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Vuosittaiset kustannukset:</span>
+                                <span class="result-value" id="annual-costs">7 800€</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Suorat verot:</span>
+                                <span class="result-value" id="direct-taxes">10 800€</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Kulutusverot:</span>
+                                <span class="result-value" id="consumption-taxes">4 560€</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Välilliset vaikutukset:</span>
+                                <span class="result-value" id="indirect-effects">12 150€</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Sisäinen tuotto (IRR):</span>
+                                <span class="result-value" id="irr-result">28%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interpretation -->
+                    <div class="interpretation">
+                        <h3>Tulosten tulkinta</h3>
+                        <div id="interpretation-text">
+                            <p><strong>Realistisella skenaariolla</strong> kotoutusinvestoinnit ovat merkittävästi kannattavia. 
+                            NPV 65 400€ tarkoittaa, että jokainen kotoutettu henkilö tuottaa yhteiskunnalle 
+                            keskimäärin tämän verran nettohyötyä 20 vuoden aikana.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="simulator-info">
+                    <h3>Simulaattorin käyttöohje</h3>
+                    <p>Tämä simulaattori perustuu tutkimuksen dynaamisen NPV-mallin. Voit:</p>
+                    <ul>
+                        <li><strong>Valita valmiita skenaarioita</strong> nähdäksesi pessimistisen, realistisen tai optimistisen arvion</li>
+                        <li><strong>Säätää parametreja</strong> liukusäädinten avulla ja nähdä vaikutuksen reaaliajassa</li>
+                        <li><strong>Testata herkkyyksiä</strong> muuttamalla yhtä parametria kerrallaan</li>
+                        <li><strong>Vertailla skenaarioita</strong> eri parametriyhdistelmillä</li>
+                    </ul>
+
+                    <div class="parameter-explanations">
+                        <h4>Parametrien selitykset:</h4>
+                        <ul>
+                            <li><strong>Multiplikaattori:</strong> Kuvaa positiivisia talouden lisävaikutuksia (2.5-4.3 kansainvälisen tutkimuksen mukaan)</li>
+                            <li><strong>Opportunity cost -kerroin:</strong> Vältettyjen järjestelmämenetysten arvo (1.0-8.0, realistisesti 2.5)</li>
+                            <li><strong>Työllistymispolku:</strong> Perustuu Tilastokeskuksen rekisteriaineistoon</li>
+                            <li><strong>Kustannukset:</strong> Viralliset KEHA, Kela ja THL:n luvut</li>
+                        </ul>
+                    </div>
+
+                    <div class="limitations">
+                        <h4>Simulaattorin rajoitukset:</h4>
+                        <p>Simulaattori on yksinkertaistettu versio tutkimuksen mallista. Se ei huomioi kaikkia tekijöitä kuten:</p>
+                        <ul>
+                            <li>Makrotaloudellisia yleisen tasapainon vaikutuksia</li>
+                            <li>Alueellisia eroja ja kaupunkikeskittymän vaikutuksia</li>
+                            <li>Sektorikohtaisia vaihteluita opportunity cost -kertoimissa</li>
+                            <li>Toisen polven integroitumisen vaikutuksia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="back-home">
+                <a href="../index.html" class="back-country-btn">← Takaisin tutkimuksen pääsivulle</a>
+            </div>
+        </article>
+    </main>
+
+    <script src="../../js/main.js"></script>
+    <script>
+        // Simulator Logic
+        class IntegrationSimulator {
+            constructor() {
+                this.scenarios = {
+                    pessimistic: {
+                        multiplier: 2.5,
+                        opportunityCostFactor: 1.5,
+                        employment610: 45,
+                        hourlyWage: 12,
+                        discountRate: 4
+                    },
+                    realistic: {
+                        multiplier: 3.4,
+                        opportunityCostFactor: 2.5,
+                        employment610: 60,
+                        hourlyWage: 13.5,
+                        discountRate: 3
+                    },
+                    optimistic: {
+                        multiplier: 4.3,
+                        opportunityCostFactor: 4.0,
+                        employment610: 75,
+                        hourlyWage: 16,
+                        discountRate: 2
+                    }
+                };
+                
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateResults();
+            }
+
+            setupEventListeners() {
+                // Scenario buttons
+                document.querySelectorAll('.scenario-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        this.selectScenario(e.target.dataset.scenario);
+                    });
+                });
+
+                // Sliders
+                document.querySelectorAll('.slider').forEach(slider => {
+                    slider.addEventListener('input', () => {
+                        this.updateValueDisplay(slider);
+                        this.updateResults();
+                        this.setCustomScenario();
+                    });
+                });
+            }
+
+            selectScenario(scenario) {
+                // Update button states
+                document.querySelectorAll('.scenario-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector(`[data-scenario="${scenario}"]`).classList.add('active');
+
+                if (scenario !== 'custom' && this.scenarios[scenario]) {
+                    this.loadScenario(this.scenarios[scenario]);
+                }
+            }
+
+            setCustomScenario() {
+                document.querySelectorAll('.scenario-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelector('[data-scenario="custom"]').classList.add('active');
+            }
+
+            loadScenario(scenario) {
+                if (scenario.multiplier) {
+                    document.getElementById('multiplier').value = scenario.multiplier;
+                    this.updateValueDisplay(document.getElementById('multiplier'));
+                }
+                if (scenario.opportunityCostFactor) {
+                    document.getElementById('opportunity-cost').value = scenario.opportunityCostFactor;
+                    this.updateValueDisplay(document.getElementById('opportunity-cost'));
+                }
+                if (scenario.employment610) {
+                    document.getElementById('employment-610').value = scenario.employment610;
+                    this.updateValueDisplay(document.getElementById('employment-610'));
+                }
+                if (scenario.hourlyWage) {
+                    document.getElementById('hourly-wage').value = scenario.hourlyWage;
+                    this.updateValueDisplay(document.getElementById('hourly-wage'));
+                }
+                if (scenario.discountRate) {
+                    document.getElementById('discount-rate').value = scenario.discountRate;
+                    this.updateValueDisplay(document.getElementById('discount-rate'));
+                }
+                
+                this.updateResults();
+            }
+
+            updateValueDisplay(slider) {
+                const valueDisplay = document.getElementById(slider.id + '-value');
+                let value = parseFloat(slider.value);
+                
+                switch(slider.id) {
+                    case 'people-count':
+                        valueDisplay.textContent = value.toLocaleString('fi-FI');
+                        break;
+                    case 'hourly-wage':
+                    case 'integration-cost':
+                    case 'unemployment-benefit':
+                    case 'housing-allowance':
+                        valueDisplay.textContent = value + '€';
+                        break;
+                    case 'discount-rate':
+                    case 'tax-rate':
+                    case 'employment-12':
+                    case 'employment-35':
+                    case 'employment-610':
+                        valueDisplay.textContent = value + '%';
+                        break;
+                    default:
+                        valueDisplay.textContent = value;
+                }
+            }
+
+            getParameters() {
+                return {
+                    peopleCount: parseInt(document.getElementById('people-count').value),
+                    hourlyWage: parseFloat(document.getElementById('hourly-wage').value),
+                    discountRate: parseFloat(document.getElementById('discount-rate').value) / 100,
+                    employment12: parseFloat(document.getElementById('employment-12').value) / 100,
+                    employment35: parseFloat(document.getElementById('employment-35').value) / 100,
+                    employment610: parseFloat(document.getElementById('employment-610').value) / 100,
+                    integrationCost: parseInt(document.getElementById('integration-cost').value),
+                    unemploymentBenefit: parseInt(document.getElementById('unemployment-benefit').value),
+                    housingAllowance: parseInt(document.getElementById('housing-allowance').value),
+                    taxRate: parseFloat(document.getElementById('tax-rate').value) / 100,
+                    multiplier: parseFloat(document.getElementById('multiplier').value),
+                    opportunityCostFactor: parseFloat(document.getElementById('opportunity-cost').value)
+                };
+            }
+
+            getEmploymentRate(year, params) {
+                if (year <= 2) return params.employment12;
+                if (year <= 5) return params.employment35;
+                return params.employment610;
+            }
+
+            calculateResults() {
+                const params = this.getParameters();
+                const annualHours = 1760;
+                const fullTimeAnnualSalary = params.hourlyWage * annualHours;
+                
+                let npv = 0;
+                let cumulativeNet = 0;
+                let paybackYear = null;
+                let totalRevenue10y = 0;
+                let totalCosts10y = 0;
+
+                for (let year = 1; year <= 20; year++) {
+                    const employmentRate = this.getEmploymentRate(year, params);
+                    const unemploymentRate = 1 - employmentRate;
+                    const annualSalary = fullTimeAnnualSalary * employmentRate;
+
+                    // Revenue calculations
+                    const directTaxes = annualSalary * params.taxRate;
+                    const consumptionTaxes = annualSalary * 0.95 * 0.20;
+                    const indirectTaxes = annualSalary * (params.multiplier + params.opportunityCostFactor - 2) * params.taxRate * 0.5;
+                    const yearlyRevenue = directTaxes + consumptionTaxes + indirectTaxes;
+
+                    // Cost calculations
+                    const integrationCostYear = year <= 3 ? params.integrationCost : params.integrationCost * 0.1;
+                    const socialAssistance = 3600; // Fixed value as in original
+                    const yearlyCosts = integrationCostYear + 
+                                      (params.unemploymentBenefit + params.housingAllowance + socialAssistance) * unemploymentRate;
+
+                    // NPV calculation
+                    const yearlyNet = yearlyRevenue - yearlyCosts;
+                    const discountFactor = Math.pow(1 + params.discountRate, year);
+                    npv += yearlyNet / discountFactor;
+
+                    // Payback calculation (undiscounted)
+                    cumulativeNet += yearlyNet;
+                    if (paybackYear === null && cumulativeNet > 0) {
+                        paybackYear = year + (cumulativeNet - yearlyNet) / yearlyNet;
+                    }
+
+                    // 10-year ROI calculation
+                    if (year <= 10) {
+                        totalRevenue10y += yearlyRevenue;
+                        totalCosts10y += yearlyCosts;
+                    }
+                }
+
+                // Calculate averages for display
+                const avgRevenue = (totalRevenue10y / 10) || 0;
+                const avgCosts = (totalCosts10y / 10) || 0;
+                const avgNet = avgRevenue - avgCosts;
+
+                // Calculate component averages
+                const avgEmployment = (params.employment12 * 2 + params.employment35 * 3 + params.employment610 * 15) / 20;
+                const avgSalary = fullTimeAnnualSalary * avgEmployment;
+                const avgDirectTaxes = avgSalary * params.taxRate;
+                const avgConsumptionTaxes = avgSalary * 0.95 * 0.20;
+                const avgIndirectEffects = avgSalary * (params.multiplier + params.opportunityCostFactor - 2) * params.taxRate * 0.5;
+
+                const roi10y = totalCosts10y > 0 ? ((totalRevenue10y - totalCosts10y) / totalCosts10y * 100) : 0;
+
+                // Calculate IRR (simplified approximation)
+                const irr = this.calculateIRR(params, npv);
+
+                return {
+                    npv: npv * params.peopleCount,
+                    npvPerPerson: npv,
+                    paybackTime: paybackYear,
+                    roi10y: roi10y,
+                    annualNet: avgNet,
+                    annualRevenue: avgRevenue,
+                    annualCosts: avgCosts,
+                    directTaxes: avgDirectTaxes,
+                    consumptionTaxes: avgConsumptionTaxes,
+                    indirectEffects: avgIndirectEffects,
+                    irr: irr
+                };
+            }
+
+            calculateIRR(params, npv) {
+                // Simplified IRR calculation
+                if (npv <= 0) return 0;
+                
+                const avgAnnualReturn = npv / 15; // Rough average over 20 years with discount
+                const avgInitialInvestment = params.integrationCost + 
+                    (params.unemploymentBenefit + params.housingAllowance + 3600) * 0.85; // Weighted average
+                
+                return Math.min(Math.max((avgAnnualReturn / avgInitialInvestment * 100), 0), 100);
+            }
+
+            updateResults() {
+                const results = this.calculateResults();
+                
+                // Main results
+                document.getElementById('npv-result').textContent = this.formatCurrency(results.npvPerPerson);
+                document.getElementById('payback-result').textContent = results.paybackTime ? 
+                    results.paybackTime.toFixed(1) + ' vuotta' : 'Ei palaudu';
+                document.getElementById('roi-result').textContent = Math.round(results.roi10y) + '%';
+                document.getElementById('annual-net-result').textContent = this.formatCurrency(results.annualNet);
+
+                // Detailed results
+                document.getElementById('annual-tax-revenue').textContent = this.formatCurrency(results.annualRevenue);
+                document.getElementById('annual-costs').textContent = this.formatCurrency(results.annualCosts);
+                document.getElementById('direct-taxes').textContent = this.formatCurrency(results.directTaxes);
+                document.getElementById('consumption-taxes').textContent = this.formatCurrency(results.consumptionTaxes);
+                document.getElementById('indirect-effects').textContent = this.formatCurrency(results.indirectEffects);
+                document.getElementById('irr-result').textContent = Math.round(results.irr) + '%';
+
+                // Update result card colors
+                this.updateResultColors(results);
+                
+                // Update interpretation
+                this.updateInterpretation(results);
+            }
+
+            updateResultColors(results) {
+                const cards = document.querySelectorAll('.result-card');
+                cards.forEach(card => {
+                    if (results.npvPerPerson > 0) {
+                        card.classList.remove('negative');
+                        card.classList.add('positive');
+                    } else {
+                        card.classList.remove('positive');
+                        card.classList.add('negative');
+                    }
+                });
+            }
+
+            updateInterpretation(results) {
+                const interpretationDiv = document.getElementById('interpretation-text');
+                let interpretation = '';
+
+                if (results.npvPerPerson > 50000) {
+                    interpretation = '<p><strong>Erittäin kannattava skenaario!</strong> NPV ylittää 50 000€, mikä tarkoittaa että kotoutusinvestoinnit ovat poikkeuksellisen kannattavia näillä parametreilla.</p>';
+                } else if (results.npvPerPerson > 30000) {
+                    interpretation = '<p><strong>Kannattava skenaario.</strong> NPV on positiivinen ja merkittävä, osoittaen että kotoutusinvestoinnit maksavat itsensä takaisin ja tuottavat voittoa.</p>';
+                } else if (results.npvPerPerson > 0) {
+                    interpretation = '<p><strong>Lievästi kannattava skenaario.</strong> NPV on positiivinen mutta maltillinen. Investoinnit maksavat itsensä takaisin mutta hyödyt ovat vähäisempiä.</p>';
+                } else {
+                    interpretation = '<p><strong>Ei-kannattava skenaario.</strong> NPV on negatiivinen, mikä tarkoittaa että kustannukset ylittävät hyödyt näillä parametreilla.</p>';
+                }
+
+                if (results.paybackTime && results.paybackTime <= 5) {
+                    interpretation += '<p><strong>Nopea takaisinmaksu:</strong> Investointi maksaa itsensä takaisin alle viidessä vuodessa.</p>';
+                }
+
+                interpretationDiv.innerHTML = interpretation;
+            }
+
+            formatCurrency(value) {
+                const absValue = Math.abs(value);
+                if (absValue >= 1000000) {
+                    return (value / 1000000).toFixed(1) + 'M€';
+                } else if (absValue >= 1000) {
+                    return (value / 1000).toFixed(0) + 'k€';
+                }
+                return value.toFixed(0) + '€';
+            }
+        }
+
+        // Initialize simulator when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new IntegrationSimulator();
+        });
+    </script>
+</body>
+</html>
